@@ -10,7 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MvcClient
+namespace RazorClientAuthOnly
 {
     public class Startup
     {
@@ -37,14 +37,13 @@ namespace MvcClient
                 {
                     options.Authority = "https://localhost:5001";
 
-                    options.ClientId = "interactive.confidential";
-                    options.ClientSecret = "secret";
+                    options.ClientId = "razorClientAuthOnly";
+                    options.ClientSecret = "511536EF-F270-4058-80CA-1C89C192F69A";
                     options.ResponseType = "code";
 
                     options.Scope.Clear();
                     options.Scope.Add("openid");
-                    options.Scope.Add("profile");
-                    options.Scope.Add("api");
+                   
                     options.SaveTokens = true;
                 });
         }
@@ -70,7 +69,6 @@ namespace MvcClient
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
